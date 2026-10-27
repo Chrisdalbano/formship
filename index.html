@@ -7,18 +7,20 @@
 <meta name="description" content="We read your public changelog against your public help center and send back every article a shipped change made wrong, with the corrected sentence. $149 flat, 48 hours, pay after you read it.">
 <meta property="og:title" content="Your changelog moved. Your help center didn't.">
 <meta property="og:description" content="Help-center drift audits for SaaS teams. $149 flat, 48 hours, pay after you read it.">
+<link rel="icon" href="brand/formship-icon-gold.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0e0f12;--panel:#16181d;--line:#262932;--ink:#e9e7e2;--mute:#9a9ca5;--old:#ff7a6b;--new:#7ad7a0;--accent:#ff7a6b;--max:1040px}
-@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f7f5f0;--panel:#fff;--line:#e3e0d8;--ink:#17181b;--mute:#62646b;--old:#c8412f;--new:#1f8a53;--accent:#c8412f}}
+:root{--bg:#141414;--panel:#1d1d1d;--line:#2c2f36;--ink:#fdfdfd;--mute:#a3a9b3;--old:#e8a33d;--new:#addfe8;--accent:#e8a33d;--accent-ink:#1d1d1d;--max:1040px}
+.logo-light{display:none}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#fdfdfd;--panel:#fff;--line:#dfe6ee;--ink:#1d1d1d;--mute:#5b6472;--old:#b5711a;--new:#2d5288;--accent:#2d5288;--accent-ink:#fdfdfd}:root:not([data-theme="dark"]) .logo-dark{display:none}:root:not([data-theme="dark"]) .logo-light{display:inline}}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
 header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
-.mark{font-weight:700;letter-spacing:-.02em;font-size:18px;text-decoration:none}
+.mark{display:inline-flex;text-decoration:none}.mark img{height:40px;width:auto}
 .mark span{color:var(--accent)}
 .top nav a{color:var(--mute);text-decoration:none;margin-left:22px;font-size:14px}
 .top nav a:hover{color:var(--ink)}
@@ -26,7 +28,7 @@ header.top{display:flex;justify-content:space-between;align-items:center;padding
 h1{font-size:clamp(36px,6.4vw,68px);line-height:1.04;letter-spacing:-.035em;margin:0 0 22px;font-weight:700;max-width:14ch}
 h1 .strike{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--old);text-decoration-thickness:3px}
 .lede{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:56ch;margin:0 0 32px}
-.cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px 22px;border-radius:10px}
+.cta{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;padding:14px 22px;border-radius:10px}
 .cta:hover{filter:brightness(1.08)}
 .sub{color:var(--mute);font-size:14px;margin-left:14px}
 .diff{margin:56px 0 0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;font:14px/1.55 "JetBrains Mono",ui-monospace,monospace}
@@ -63,7 +65,7 @@ footer{padding:40px 0 60px;color:var(--mute);font-size:13px;border-top:1px solid
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="mark" href="./">formship<span>.</span></a>
+    <a class="mark" href="./" aria-label="Formship"><img class="logo-dark" src="brand/formship-horizontal-white.svg" alt="Formship" height="40"><img class="logo-light" src="brand/formship-horizontal-blue.svg" alt="Formship" height="40"></a>
     <nav><a href="#how">How it works</a><a href="#price">Price</a><a href="#faq">FAQ</a><a href="mailto:chrisdalbano12@gmail.com?subject=Drift%20audit">Contact</a></nav>
   </header>
 
