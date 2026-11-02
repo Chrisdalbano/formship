@@ -29,7 +29,7 @@ const rows = [
       <h1 class="h1 h1--page">How often help centers drift from changelogs</h1>
       <p class="lede note__deck">
         An early look. {{ n.sample }} companies, one week, a sample that is small and not random.
-        It is a first count, not a rate you should quote.
+        It is a first count and an upper limit, not a rate you should quote.
       </p>
       <p class="note__byline">Formship. November 2, 2026.</p>
     </header>
@@ -132,7 +132,8 @@ const rows = [
         <li>
           <strong>The log has gaps.</strong> Some companies from our first night have no recorded
           verdict. One of them is in the {{ n.contradicted }} because the send log shows its finding.
-          If the rest came back clean, {{ n.contradicted }} of {{ n.sample }} is too high.
+          Our notes from that night say we read roughly 35 companies and most came back clean, so
+          {{ n.contradicted }} of {{ n.sample }} is too high. Read it as an upper limit.
         </li>
         <li>
           <strong>One borderline call.</strong> We sent one further company a finding about two of
