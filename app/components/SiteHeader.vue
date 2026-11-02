@@ -1,3 +1,9 @@
+<script setup lang="ts">
+// The homepage hero has its own CTA, so one screen never shows two.
+const route = useRoute()
+const showCta = computed(() => route.path !== '/')
+</script>
+
 <template>
   <header class="container header">
     <NuxtLink to="/" class="home" aria-label="Formship home">
@@ -6,7 +12,7 @@
     <nav class="nav" aria-label="Main">
       <NuxtLink to="/research">Research</NuxtLink>
       <NuxtLink to="/about">About</NuxtLink>
-      <CtaLink compact class="nav-cta" />
+      <CtaLink v-if="showCta" compact class="nav-cta" />
     </nav>
   </header>
 </template>

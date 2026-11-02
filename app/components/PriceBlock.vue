@@ -1,64 +1,49 @@
 <script setup lang="ts">
-const TERMS = [
-  ['Scope', 'Up to 60 public help articles'],
-  ['Window', 'The last 90 days of your public changelog'],
-  ['You get', 'Article link, exact quote, the change that made it wrong, a corrected sentence'],
-  ['Delivery', 'By email, within 48 hours'],
-  ['Payment', 'Invoice after delivery. No account, no access, no call.'],
-] as const
+const FACTS = ['Up to 60 articles, last 90 days', 'Report in 48 hours', 'Pay after you read it']
 </script>
 
 <template>
   <section id="price" class="container">
-    <div class="sheet">
-      <p class="label">Price</p>
-      <div class="price">
-        <div v-reveal class="price__lead">
-          <p class="price__amount num">$149</p>
-          <h2 class="h3 price__claim">One flat price. You pay after you read it.</h2>
-          <p class="body-mute">If the report isn't useful, you don't pay.</p>
-          <CtaLink class="price__cta" />
-        </div>
-        <dl v-reveal="90" class="price__terms">
-          <div v-for="[term, value] in TERMS" :key="term" class="price__term">
-            <dt class="label">{{ term }}</dt>
-            <dd>{{ value }}</dd>
-          </div>
-        </dl>
+    <div class="price">
+      <p v-reveal class="price__amount num">$149</p>
+      <div v-reveal="90" class="price__side">
+        <ul class="price__facts">
+          <li v-for="fact in FACTS" :key="fact" class="price__fact">{{ fact }}</li>
+        </ul>
+        <CtaLink />
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.price { display: grid; gap: 2.5rem; align-items: start; }
-
-@media (min-width: 48rem) {
-  .price { grid-template-columns: 4fr 5fr; gap: 3rem; }
-}
-
-.price__lead { display: grid; gap: 0.625rem; justify-items: start; }
-
-.price__amount {
-  font-size: clamp(4.5rem, 10vw, 8rem);
-  font-weight: 620;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  margin-bottom: 0.75rem;
-}
-
-.price__cta { margin-top: 1.25rem; }
-
-.price__term {
+.price {
   display: grid;
-  gap: 0.25rem;
-  padding-block: 0.875rem;
+  gap: 2rem;
+  align-items: end;
+  padding-block: var(--section);
   border-top: 1px solid var(--line);
 }
 
-.price__term:first-child { border-top-color: var(--line-strong); }
+@media (min-width: 48rem) {
+  .price { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
 
-@media (min-width: 30rem) {
-  .price__term { grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; align-items: baseline; }
+.price__amount {
+  font-size: clamp(6rem, 17vw, 14rem);
+  font-weight: 640;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+.price__side { display: grid; gap: 1.75rem; justify-items: start; }
+
+.price__facts { width: 100%; }
+
+.price__fact {
+  padding-block: 0.75rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
 }
 </style>

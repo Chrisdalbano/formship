@@ -28,9 +28,8 @@ useHead({
 
 <template>
   <div>
-    <HomeHero class="container" />
+    <HomeHero />
     <HowItWorks />
-    <FindingExample />
     <PriceBlock />
     <FaqList />
   </div>

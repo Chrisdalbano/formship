@@ -1,63 +1,42 @@
 <script setup lang="ts">
-const STEPS = [
-  {
-    title: 'We read the changelog',
-    text: 'We take the last 90 days and keep the changes that alter how a customer does something: renamed UI, moved settings, new defaults, limits, plans.',
-  },
-  {
-    title: 'We read the help center',
-    text: 'We match each change to the public articles that describe the old behavior, up to 60 of them, and look for sentences that are false today.',
-  },
-  {
-    title: 'We check every finding',
-    text: 'Both quotes are machine-checked word for word against the live page, and a second review has to agree the article is wrong. If a finding is ambiguous, we drop it.',
-  },
-]
+const STEPS = ['Send two links.', 'We compare them.', 'Get the fixes.']
 </script>
 
 <template>
   <section id="how" class="container">
-    <div class="sheet">
-      <p class="label">How it works</p>
-      <div>
-        <h2 v-reveal class="h2 how__title">You send two links. We read both.</h2>
-        <ol class="how__steps">
-          <li
-            v-for="(step, index) in STEPS"
-            :key="step.title"
-            v-reveal="index * 90"
-            class="how__step"
-          >
-            <p class="how__num">{{ index + 1 }}</p>
-            <h3 class="h3">{{ step.title }}</h3>
-            <p class="body-mute">{{ step.text }}</p>
-          </li>
-        </ol>
-      </div>
-    </div>
+    <ol class="steps" aria-label="How it works">
+      <li v-for="(step, index) in STEPS" :key="step" v-reveal="index * 80" class="step">
+        <span class="step__num">{{ index + 1 }}</span>
+        {{ step }}
+      </li>
+    </ol>
   </section>
 </template>
 
 <style scoped>
-.how__title { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
-
-.how__steps { display: grid; gap: 2rem; }
+.steps {
+  display: grid;
+  gap: 1.25rem;
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
 
 @media (min-width: 48rem) {
-  .how__steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 }
 
-.how__step {
-  display: grid;
-  gap: 0.625rem;
-  align-content: start;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line-strong);
+.step {
+  display: flex;
+  gap: 0.875rem;
+  align-items: baseline;
+  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
 }
 
-.how__num {
-  font: 500 0.8125rem/1.4 var(--mono);
+.step__num {
+  font: 500 0.875rem/1 var(--mono);
+  letter-spacing: 0;
   color: var(--accent);
-  margin-bottom: 0.75rem;
 }
 </style>
