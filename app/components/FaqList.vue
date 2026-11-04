@@ -1,6 +1,25 @@
+<script setup lang="ts">
+import { MAILTO_AUDIT, SITE } from '~~/shared/site'
+</script>
+
 <template>
   <section id="faq" class="container">
     <div class="faq">
+      <details>
+        <summary>How do I get one?</summary>
+        <p>
+          Email <a :href="MAILTO_AUDIT">{{ SITE.email }}</a> with your help-center URL and your
+          changelog or release notes URL. The report comes back within 48 hours.
+        </p>
+      </details>
+      <details>
+        <summary>What does the report look like?</summary>
+        <p>
+          Each finding quotes the outdated sentence, the dated changelog entry that made it wrong, and
+          a corrected sentence to paste in. <NuxtLink to="/sample">See a sample report</NuxtLink> for a
+          made-up product.
+        </p>
+      </details>
       <details>
         <summary>Do you need access to anything?</summary>
         <p>No. We only read pages that are already public. If your help center or changelog sits behind a login, we can't audit it.</p>
@@ -11,7 +30,7 @@
       </details>
       <details>
         <summary>What if the report isn't useful?</summary>
-        <p>You don't pay. We invoice after delivery, so you read it first.</p>
+        <p>You don't pay. The payment link comes at the end of the report, so you read it first.</p>
       </details>
       <details>
         <summary>How do you check a finding?</summary>
@@ -51,6 +70,8 @@ summary::after {
 
 details[open] summary::after { content: '-'; }
 summary:hover::after { color: var(--ink); }
+
+details p a:hover { color: var(--ink); }
 
 details p {
   max-width: 40rem;

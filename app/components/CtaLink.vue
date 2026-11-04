@@ -5,7 +5,7 @@ withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
 </script>
 
 <template>
-  <a class="cta" :class="{ 'cta--compact': compact }" :href="MAILTO_AUDIT">Request an audit</a>
+  <a class="cta" :class="{ 'cta--compact': compact }" :href="MAILTO_AUDIT">Get an audit</a>
 </template>
 
 <style scoped>

@@ -11,6 +11,7 @@
       </div>
       <div class="hero__action">
         <CtaLink />
+        <NuxtLink to="/sample" class="hero__sample">See a sample report</NuxtLink>
       </div>
     </div>
     <div class="hero__band">
@@ -53,7 +54,15 @@
   letter-spacing: -0.006em;
 }
 
-.hero__action { display: flex; }
+.hero__action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.hero__sample { color: var(--mute); font-size: 0.9375rem; }
+.hero__sample:hover { color: var(--ink); }
 
 @media (min-width: 60rem) {
   .hero__top {

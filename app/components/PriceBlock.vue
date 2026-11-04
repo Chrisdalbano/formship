@@ -10,7 +10,10 @@ const FACTS = ['Up to 60 articles, last 90 days', 'Report in 48 hours', 'Pay aft
         <ul class="price__facts">
           <li v-for="fact in FACTS" :key="fact" class="price__fact">{{ fact }}</li>
         </ul>
-        <CtaLink />
+        <div class="price__action">
+          <CtaLink />
+          <NuxtLink to="/sample" class="price__sample">See a sample report</NuxtLink>
+        </div>
       </div>
     </div>
   </section>
@@ -39,6 +42,10 @@ const FACTS = ['Up to 60 articles, last 90 days', 'Report in 48 hours', 'Pay aft
 .price__side { display: grid; gap: 1.75rem; justify-items: start; }
 
 .price__facts { width: 100%; }
+
+.price__action { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+.price__sample { color: var(--mute); font-size: 0.9375rem; }
+.price__sample:hover { color: var(--ink); }
 
 .price__fact {
   padding-block: 0.75rem;
