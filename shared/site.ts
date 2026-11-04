@@ -12,7 +12,7 @@
    * Mouseflow project for formship.io (Christian's personal Mouseflow account).
    * Empty = no script and the privacy page says "no analytics". Set both together.
    */
-  mouseflowProject: '',
+  mouseflowProject: 'f6bd17cc-9df3-4a8a-baea-69c1121ab594',
 } as const
 
 /**
