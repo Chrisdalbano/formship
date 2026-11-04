@@ -2,6 +2,7 @@
 // The homepage hero has its own CTA, so one screen never shows two.
 const route = useRoute()
 const showCta = computed(() => route.path !== '/')
+const inGuides = computed(() => route.path.startsWith('/guides'))
 </script>
 
 <template>
@@ -10,8 +11,10 @@ const showCta = computed(() => route.path !== '/')
       <SiteLogo />
     </NuxtLink>
     <nav class="nav" aria-label="Main">
-      <NuxtLink to="/research">Research</NuxtLink>
-      <NuxtLink to="/about">About</NuxtLink>
+      <NuxtLink to="/sample">Sample</NuxtLink>
+      <NuxtLink to="/guides/" :class="{ 'is-section': inGuides }">Guides</NuxtLink>
+      <NuxtLink to="/research" class="nav-wide">Research</NuxtLink>
+      <NuxtLink to="/about" class="nav-wide">About</NuxtLink>
       <CtaLink v-if="showCta" compact class="nav-cta" />
     </nav>
   </header>
@@ -38,9 +41,12 @@ const showCta = computed(() => route.path !== '/')
 
 .nav a:not(.nav-cta) { color: var(--mute); text-decoration: none; }
 .nav a:not(.nav-cta):hover,
-.nav a.router-link-exact-active:not(.nav-cta) { color: var(--ink); }
+.nav a.router-link-exact-active:not(.nav-cta),
+.nav a.is-section { color: var(--ink); }
 
+/* Phones: Sample and Guides stay; Research and About are one tap away in the footer. */
 @media (max-width: 30rem) {
-  .nav-cta { display: none; }
+  .nav-cta,
+  .nav-wide { display: none; }
 }
 </style>

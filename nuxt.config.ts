@@ -27,10 +27,15 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/', '/research', '/about', '/privacy'],
+      routes: ['/', '/sample', '/guides/', '/research', '/about', '/privacy'],
       crawlLinks: true,
+      // The crawler strips trailing slashes, so links to /guides/ would also produce a
+      // guides.html beside the guides/ folder. Only guides/index.html should exist.
+      ignore: [/^\/guides$/],
       // /research.html rather than /research/index.html, so GitHub Pages serves
-      // the canonical URL directly with no trailing-slash redirect.
+      // the canonical URL directly with no trailing-slash redirect. The one exception
+      // is /guides/: a route ending in a slash still becomes guides/index.html, which
+      // keeps the index and guides/<slug>.html in one folder with no guides.html beside it.
       autoSubfolderIndex: false,
     },
   },

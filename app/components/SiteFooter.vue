@@ -12,6 +12,8 @@ import { MAILTO, SITE } from '~~/shared/site'
       </p>
     </div>
     <ul class="links">
+      <li><NuxtLink to="/sample">Sample report</NuxtLink></li>
+      <li><NuxtLink to="/guides/">Guides</NuxtLink></li>
       <li><NuxtLink to="/research">Research</NuxtLink></li>
       <li><NuxtLink to="/about">About</NuxtLink></li>
       <li><NuxtLink to="/privacy">Privacy</NuxtLink></li>

@@ -1,0 +1,29 @@
+# Formship
+
+> Formship LLC is a small software company in Orlando, Florida. It sells one service: a help-center drift audit. We read a SaaS company's public changelog against its public help center and report every article a shipped change made wrong, with the outdated sentence quoted, the dated changelog entry that contradicts it, and a corrected sentence to paste in.
+
+## The audit
+
+- Price: $149, flat.
+- Scope: up to 60 public help articles, checked against the last 90 days of a public changelog or release notes.
+- Delivery: a written report within 48 hours.
+- Payment: after reading. The report ends with a payment link. If we find nothing, the report says so and there is no charge.
+- Access: public pages only. No logins, no calls, no contract.
+- Method: both quotes in each finding are machine-checked word for word against the live pages, and a second review has to agree the article is wrong today. Changes that were never announced, and screenshots, are not covered.
+- To request one: email hi@formship.io with the help-center URL and the changelog URL.
+
+## Pages
+
+- [Home](https://formship.io/): what the audit is, price, and FAQ.
+- [Sample report](https://formship.io/sample): a full example report for a fictional product, showing the structure of a real one.
+- [Guides](https://formship.io/guides/): practical guides for docs and support owners.
+- [How help-center drift happens, and a 20-minute monthly check](https://formship.io/guides/help-center-drift): why help articles fall behind a product and a monthly check one person can run.
+- [Writing release notes your docs team can act on](https://formship.io/guides/release-notes-for-docs): a changelog entry format that tells a docs owner what is no longer true.
+- [What to check in your help center after a pricing or plan change](https://formship.io/guides/pricing-change-checklist): where plan names, prices and limits get copied and how to find each copy.
+- [Research](https://formship.io/research): an early field note. 12 of 42 SaaS companies had a help article we could show was contradicted by their own changelog. The sample is small and not random; read 12 of 42 as an upper limit, not a rate.
+- [About](https://formship.io/about): company details. Founder: Christian D'Albano.
+- [Privacy](https://formship.io/privacy): no cookies, analytics or tracking on the site.
+
+## Contact
+
+hi@formship.io
