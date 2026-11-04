@@ -4,7 +4,13 @@ import { MAILTO, SITE } from '~~/shared/site'
 
 <template>
   <footer class="container footer">
-    <p>© 2026 {{ SITE.legalName }}. {{ SITE.location }}.</p>
+    <div class="legal">
+      <p>© 2026 {{ SITE.legalName }}. {{ SITE.location }}.</p>
+      <p class="also">
+        Also from {{ SITE.legalName }}:
+        <a href="https://barato.si" rel="noopener">barato.si</a>, a daily index of US price drops and probable price errors.
+      </p>
+    </div>
     <ul class="links">
       <li><NuxtLink to="/research">Research</NuxtLink></li>
       <li><NuxtLink to="/about">About</NuxtLink></li>
@@ -24,6 +30,10 @@ import { MAILTO, SITE } from '~~/shared/site'
   color: var(--mute);
   font-size: 0.875rem;
 }
+
+.legal { display: grid; gap: 0.375rem; max-width: 34rem; }
+.also { font-size: 0.8125rem; }
+.also a:hover { color: var(--ink); }
 
 .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
 .links a { text-decoration: none; }

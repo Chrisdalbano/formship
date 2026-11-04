@@ -20,7 +20,7 @@ export function usePageSeo({ title, description, path }: PageSeo) {
     ogImage: SITE.ogImage,
     ogImageWidth: 1200,
     ogImageHeight: 630,
-    ogImageAlt: "Your changelog moved. Your help center didn't. Formship help-center drift audits.",
+    ogImageAlt: 'Formship. Help-center drift audits, $149 flat, report in 48 hours.',
     twitterCard: 'summary_large_image',
   })
 

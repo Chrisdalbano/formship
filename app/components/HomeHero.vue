@@ -1,12 +1,15 @@
 <template>
-  <section class="hero">
+  <section class="hero" aria-labelledby="hero-title">
     <div class="container hero__top">
-      <h1 class="hero__title">
-        <span class="hero__line">Your changelog moved.</span>{{ ' ' }}
-        <span class="hero__line">Your help center didn't.</span>
-      </h1>
+      <div class="hero__copy">
+        <p class="label hero__eyebrow">Help-center drift audit</p>
+        <h1 id="hero-title" class="hero__title">We check your help center against your changelog.</h1>
+        <p class="hero__sub">
+          You get every article a recent release made wrong, with the outdated sentence quoted
+          and a corrected one to paste in. $149, and you pay after you read it.
+        </p>
+      </div>
       <div class="hero__action">
-        <p class="hero__line-short">We find the help articles your last release made wrong.</p>
         <CtaLink />
       </div>
     </div>
@@ -19,37 +22,45 @@
 </template>
 
 <style scoped>
+/*
+ * The header wordmark sits directly above this block, so the hero has to read as a new
+ * thing, not a second line under the logo: a hard spacing break, a mono label to start
+ * on, and a headline set clearly larger and narrower than the wordmark.
+ */
 .hero__top {
   display: grid;
-  gap: 1.25rem;
-  padding-block: clamp(0.75rem, 2vw, 1.5rem) clamp(1.5rem, 2.5vw, 2rem);
+  gap: 2rem;
+  padding-block: clamp(3rem, 9vw, 7.5rem) clamp(2.5rem, 5vw, 4rem);
 }
+
+.hero__copy { display: grid; gap: 1.25rem; }
+
+.hero__eyebrow { color: var(--accent); }
 
 .hero__title {
-  font-size: clamp(2rem, 4.8vw, 4.25rem);
+  max-width: 15ch;
+  font-size: clamp(2.5rem, 6.4vw, 5.5rem);
   font-weight: 640;
   line-height: 1.02;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.042em;
 }
 
-.hero__action {
-  display: grid;
-  gap: 1rem;
-  justify-items: start;
+.hero__sub {
+  max-width: 36rem;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--mute);
+  letter-spacing: -0.006em;
 }
 
-.hero__line-short { color: var(--mute); max-width: 20rem; line-height: 1.4; }
+.hero__action { display: flex; }
 
-@media (min-width: 48rem) {
-  .hero__line { display: block; }
-
+@media (min-width: 60rem) {
   .hero__top {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
-    gap: 2rem;
+    gap: 3rem;
   }
-
-  .hero__action { justify-items: end; text-align: right; }
 }
 
 .hero__band {
