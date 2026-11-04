@@ -19,8 +19,16 @@ const organization = {
   founder: { '@type': 'Person', name: SITE.founder },
 }
 
+// Mouseflow (same loader as barato.si and chrisdalbano.com). Off while the project id is empty.
+const mouseflow = SITE.mouseflowProject
+  ? [{
+      type: 'text/javascript' as const,
+      innerHTML: `window._mfq=window._mfq||[];(function(){var mf=document.createElement("script");mf.type="text/javascript";mf.defer=true;mf.src="//cdn.mouseflow.com/projects/${SITE.mouseflowProject}.js";document.getElementsByTagName("head")[0].appendChild(mf);})();`,
+    }]
+  : []
+
 useHead({
-  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(organization) }],
+  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(organization) }, ...mouseflow],
 })
 </script>
 

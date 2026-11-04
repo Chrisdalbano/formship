@@ -8,6 +8,11 @@
   email: 'hi@formship.io',
   ogImage: 'https://formship.io/og.png',
   logo: 'https://formship.io/brand/formship-horizontal-blue.svg',
+  /**
+   * Mouseflow project for formship.io (Christian's personal Mouseflow account).
+   * Empty = no script and the privacy page says "no analytics". Set both together.
+   */
+  mouseflowProject: '',
 } as const
 
 /**

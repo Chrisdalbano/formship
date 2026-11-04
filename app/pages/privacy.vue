@@ -3,7 +3,9 @@ import { MAILTO, SITE } from '~~/shared/site'
 
 usePageSeo({
   title: 'Privacy | Formship',
-  description: 'No cookies, no analytics, no tracking on this site. How Formship handles business addresses found on public pages, and how to opt out.',
+  description: SITE.mouseflowProject
+    ? 'What this site measures with Mouseflow, how Formship handles business addresses found on public pages, and how to opt out.'
+    : 'No cookies, no analytics, no tracking on this site. How Formship handles business addresses found on public pages, and how to opt out.',
   path: '/privacy',
 })
 </script>
@@ -12,11 +14,21 @@ usePageSeo({
   <div class="container policy">
     <header class="policy__head">
       <h1 class="h1 h1--page">Privacy</h1>
-      <p class="policy__date">Last updated November 2, 2026.</p>
+      <p class="policy__date">Last updated {{ SITE.mouseflowProject ? 'November 4, 2026' : 'November 2, 2026' }}.</p>
     </header>
     <div class="prose">
       <h2 class="h3">This site</h2>
-      <p>
+      <p v-if="SITE.mouseflowProject">
+        We use Mouseflow to see how the site is used: page views, clicks, scrolling and pointer
+        movement, including recordings of visits. Text you type is masked and we don't use it to
+        identify you. Mouseflow may set its own cookies; its policy is at
+        <a href="https://mouseflow.com/privacy/">mouseflow.com/privacy</a>. To opt out, block
+        cdn.mouseflow.com or turn on Do Not Track in your browser. No ad pixels, no forms.
+        Fonts are served from this site, not from a third party. The site is hosted on GitHub Pages,
+        which keeps its own technical logs, including IP addresses, under
+        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.
+      </p>
+      <p v-else>
         No cookies, no analytics, no tracking pixels, no forms. Fonts are served from this site, not
         from a third party. The site is hosted on GitHub Pages, which keeps its own technical logs,
         including IP addresses, under
