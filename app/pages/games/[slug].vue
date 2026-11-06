@@ -12,7 +12,7 @@ usePageSeo({
   title: `${game.title} | Formship Games`,
   description: game.logline,
   path: `/games/${game.slug}`,
-  image: game.cover,
+  image: game.og,
 })
 
 useHead({

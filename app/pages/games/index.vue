@@ -10,7 +10,7 @@ usePageSeo({
   title: 'Formship Games',
   description,
   path: '/games/',
-  image: lead!.cover,
+  image: lead!.og,
 })
 
 useHead({

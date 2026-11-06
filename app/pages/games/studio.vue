@@ -6,7 +6,7 @@ usePageSeo({
   title: 'Studio | Formship Games',
   description: "How Formship Games works: one rule per game, hand-drawn characters, and updates driven by what players could not read. A label of Formship LLC, Orlando, Florida.",
   path: '/games/studio',
-  image: GAMES[0]!.cover,
+  image: GAMES[0]!.og,
 })
 
 const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games')}`

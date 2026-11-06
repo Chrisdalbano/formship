@@ -29,6 +29,8 @@ export interface Game {
   platforms: string
   credits: string
   cover: Shot
+  /** 1200x630 JPEG for link previews (webp previews fail on some platforms). */
+  og: Shot
   shots: Shot[]
   /** Paragraphs for the game page. Plain text, one idea each. */
   story: string[]
@@ -50,6 +52,7 @@ export const GAMES: Game[] = [
     platforms: 'Desktop, aimed at Steam. Alpha playable in the browser.',
     credits: "Direction, design, programming and painted characters by Christian D'Albano. Sound, voice and co-written lore by Nicholas Drabb.",
     cover: shot('/games/spare-knight/cover.webp', 'Spare Knight key art: the brush-lettered title with its gear over the Act 1 countryside', 1600, 1000),
+    og: shot('/games/spare-knight/og.jpg', "Spare Knight key art", 1200, 630),
     shots: [
       shot('/games/spare-knight/camp.webp', 'Wren and the knight at the camp fire between battles', 1600, 1214),
       shot('/games/spare-knight/combat-act2.webp', 'Act 2: the ruined walls on the cathedral approach', 1600, 800),
@@ -77,6 +80,7 @@ export const GAMES: Game[] = [
     platforms: 'Browser on Wavedash and itch.io',
     credits: "Design, direction, programming and hand-drawn standees by Christian D'Albano.",
     cover: shot('/games/i-wont-be-abducted/cover.webp', 'Key art: the boy stands his ground in the bedroom doorway', 1600, 1010),
+    og: shot('/games/i-wont-be-abducted/og.jpg', "I Won't Be Abducted key art", 1200, 630),
     shots: [
       shot('/games/i-wont-be-abducted/placement-2026-09.webp', 'Night four, fight paused: legal cells glow green while a tin can is placed beside the boy and two aliens', 1600, 900),
       shot('/games/i-wont-be-abducted/boss-entrance-2026-09.webp', "The final night's entrance: a giant hand lowers the boss onto the board", 1280, 720),
@@ -106,6 +110,7 @@ export const GAMES: Game[] = [
     platforms: 'Browser on Wavedash and itch.io, Windows',
     credits: "Design, direction, programming, bot behaviour and feel tuning by Christian D'Albano.",
     cover: shot('/games/thunderbashers/cover.webp', 'ThunderBashers key art: the broadcast-style league lockup over a floodlit storm pit', 1600, 900),
+    og: shot('/games/thunderbashers/og.jpg', "ThunderBashers key art", 1200, 630),
     shots: [
       shot('/games/thunderbashers/v11-match.webp', 'A match: three robots with nameplates on the pit floor, the ball between them', 1347, 626),
       shot('/games/thunderbashers/garage.webp', 'The Garage: name your robot, pick colours and place stickers on a live preview', 1600, 900),
