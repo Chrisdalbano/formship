@@ -49,7 +49,7 @@ export const GAMES: Game[] = [
     status: 'In development',
     genre: 'Tactical roguelike',
     engine: 'Phaser, Electron',
-    platforms: 'Desktop, aimed at Steam. Alpha playable in the browser.',
+    platforms: 'Desktop, aimed at Steam. Alpha playable in the browser on Wavedash and itch.io.',
     credits: "Direction, design, programming and painted characters by Christian D'Albano. Sound, voice and co-written lore by Nicholas Drabb.",
     cover: shot('/games/spare-knight/cover.webp', 'Spare Knight key art: the brush-lettered title with its gear over the Act 1 countryside', 1600, 1000),
     og: shot('/games/spare-knight/og.jpg', "Spare Knight key art", 1200, 630),
@@ -63,11 +63,12 @@ export const GAMES: Game[] = [
       'Cog, Wren, the machines and the event illustrations are painted by hand. The painted cast is the reason the game exists, so the production pipeline is built to make drawing the only slow step.',
     ],
     now: [
-      'The browser alpha on itch.io is the first version of the game, built in 13 days and rebuilt in July around a readable interface.',
+      'The browser alpha on Wavedash and itch.io is the first version of the game, built in 13 days and rebuilt in July around a readable interface.',
       'The full game is being remade for desktop: resumable runs, a black-and-paper interface, joined terrain, illustrated scene transitions and a larger cast of stranger machines. It ships when the beta survives a clean-machine install.',
     ],
     play: [
-      { label: 'Play the alpha on itch.io', href: 'https://formship.itch.io/spare-knight' },
+      { label: 'Play the alpha on Wavedash', href: 'https://wavedash.com/games/spareknight-game' },
+      { label: 'itch.io', href: 'https://formship.itch.io/spare-knight' },
     ],
   },
   {
@@ -153,8 +154,8 @@ export const RELEASES: Release[] = [
   {
     title: 'Runicorn Zombie Apocalypse',
     logline: 'The last colorful unicorn in a gray city. Close rainbow loops around the horde. The whole game fits in 13 kilobytes.',
-    engine: 'JavaScript and Canvas, browser',
-    href: 'https://chrisdalbano.com/games/runicorn-zombie-apocalypse/',
+    engine: 'JavaScript and Canvas, browser on Wavedash',
+    href: 'https://wavedash.com/games/runicorn-zombie-apocalypse',
     image: shot('/games/runicorn/gameplay.webp', 'A rainbow loop closes around zombie unicorns in a dark city arena', 1280, 800),
   },
 ]
