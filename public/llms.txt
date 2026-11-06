@@ -24,6 +24,16 @@
 - [About](https://formship.io/about): company details. Founder: Christian D'Albano.
 - [Privacy](https://formship.io/privacy): no cookies, analytics or tracking on the site.
 
+## Formship Games
+
+Formship Games is the game label of Formship LLC: tactical and systemic games with hand-drawn art, designed and programmed by Christian D'Albano.
+
+- [Formship Games](https://formship.io/games/): the games, with Spare Knight in development.
+- [Spare Knight](https://formship.io/games/spare-knight): a tactical roguelike where attacks never miss. Browser alpha playable; a desktop version for Steam is in development.
+- [I Won't Be Abducted](https://formship.io/games/i-wont-be-abducted): a tabletop defense game about a boy defending his bedroom from aliens. Released.
+- [ThunderBashers](https://formship.io/games/thunderbashers): an arena brawler where spinning is the only verb, with online rooms. Released.
+- [Studio](https://formship.io/games/studio): how the studio works.
+
 ## Contact
 
 hi@formship.io
