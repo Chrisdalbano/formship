@@ -34,6 +34,7 @@ Formship Games is the game label of Formship LLC: tactical and systemic games wi
 - [I Won't Be Abducted](https://formship.io/games/i-wont-be-abducted): a tabletop defense game about a boy defending his bedroom from aliens. Released.
 - [ThunderBashers](https://formship.io/games/thunderbashers): an arena brawler where spinning is the only verb, with online rooms. Released.
 - [Studio](https://formship.io/games/studio): how the studio works.
+- [Formship Games on itch.io](https://formship.itch.io): play the games in a browser.
 
 ## Contact
 

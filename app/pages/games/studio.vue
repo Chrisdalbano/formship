@@ -56,6 +56,7 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
         <div><dt class="label">Founder and designer</dt><dd>{{ SITE.founder }}</dd></div>
         <div><dt class="label">Engines</dt><dd>Phaser, Unity, Godot</dd></div>
         <div><dt class="label">In development</dt><dd><NuxtLink to="/games/spare-knight">Spare Knight</NuxtLink></dd></div>
+        <div><dt class="label">Play</dt><dd><a href="https://formship.itch.io" rel="noopener">formship.itch.io</a></dd></div>
         <div><dt class="label">Contact</dt><dd><a :href="mail">{{ SITE.email }}</a></dd></div>
       </dl>
     </div>

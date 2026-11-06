@@ -67,7 +67,7 @@ export const GAMES: Game[] = [
       'The full game is being remade for desktop: resumable runs, a black-and-paper interface, joined terrain, illustrated scene transitions and a larger cast of stranger machines. It ships when the beta survives a clean-machine install.',
     ],
     play: [
-      { label: 'Play the alpha on itch.io', href: 'https://chrisdbgames.itch.io/spare-knight' },
+      { label: 'Play the alpha on itch.io', href: 'https://formship.itch.io/spare-knight' },
     ],
   },
   {
@@ -97,7 +97,7 @@ export const GAMES: Game[] = [
     ],
     play: [
       { label: 'Play on Wavedash', href: 'https://wavedash.com/games/i-won-t-be-abducted' },
-      { label: 'itch.io', href: 'https://chrisdbgames.itch.io/i-wont-be-abducted' },
+      { label: 'itch.io', href: 'https://formship.itch.io/i-wont-be-abducted' },
     ],
   },
   {
@@ -128,7 +128,7 @@ export const GAMES: Game[] = [
     ],
     play: [
       { label: 'Play on Wavedash', href: 'https://wavedash.com/games/thunder-bashers' },
-      { label: 'itch.io', href: 'https://chrisdbgames.itch.io/thunderbashers' },
+      { label: 'itch.io', href: 'https://formship.itch.io/thunderbashers' },
     ],
   },
 ]

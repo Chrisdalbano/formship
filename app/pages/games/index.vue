@@ -47,6 +47,9 @@ useHead({
         Formship Games is the game label of Formship LLC in Orlando, Florida. Tactical and systemic
         games with hand-drawn art, designed, programmed and directed by Christian D'Albano.
       </p>
+      <p class="intro__links">
+        <a href="https://formship.itch.io" rel="noopener">All our games on itch.io</a>
+      </p>
     </section>
 
     <section class="container lead" aria-labelledby="lead-title">
