@@ -1,6 +1,6 @@
 # Formship
 
-> Formship LLC is a small software company in Orlando, Florida. It sells one service: a help-center drift audit. We read a SaaS company's public changelog against its public help center and report every article a shipped change made wrong, with the outdated sentence quoted, the dated changelog entry that contradicts it, and a corrected sentence to paste in.
+> Formship LLC is a small software company in Orlando, Florida. It makes three things: a help-center drift audit service, the barato.si price index, and games under the Formship Games label. The audit: we read a SaaS company's public changelog against its public help center and report every article a shipped change made wrong, with the outdated sentence quoted, the dated changelog entry that contradicts it, and a corrected sentence to paste in.
 
 ## The audit
 
@@ -21,7 +21,7 @@
 - [Writing release notes your docs team can act on](https://formship.io/guides/release-notes-for-docs): a changelog entry format that tells a docs owner what is no longer true.
 - [What to check in your help center after a pricing or plan change](https://formship.io/guides/pricing-change-checklist): where plan names, prices and limits get copied and how to find each copy.
 - [Research](https://formship.io/research): an early field note. 12 of 42 SaaS companies had a help article we could show was contradicted by their own changelog. The sample is small and not random; read 12 of 42 as an upper limit, not a rate.
-- [About](https://formship.io/about): company details. Founder: Christian D'Albano.
+- [About](https://formship.io/about): company details and the three lines. Founder: Christian D'Albano.
 - [Privacy](https://formship.io/privacy): no cookies, analytics or tracking on the site.
 
 ## Formship Games

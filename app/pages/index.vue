@@ -32,5 +32,6 @@ useHead({
     <HowItWorks />
     <PriceBlock />
     <FaqList />
+    <CompanyLines />
   </div>
 </template>

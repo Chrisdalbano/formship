@@ -3,7 +3,7 @@ import { MAILTO, SITE } from '~~/shared/site'
 
 usePageSeo({
   title: 'About | Formship',
-  description: "Formship LLC is a small software company in Orlando, Florida, founded by Christian D'Albano. We sell help-center drift audits.",
+  description: "Formship LLC is a small software company in Orlando, Florida, founded by Christian D'Albano. It makes help-center drift audits, the barato.si price index, and games under Formship Games.",
   path: '/about',
 })
 </script>
@@ -14,17 +14,18 @@ usePageSeo({
     <div class="about__grid">
       <div class="prose">
         <p class="lede">
-          Formship LLC makes one thing right now: an audit that compares a SaaS company's public
-          changelog with its public help center and returns the articles a shipped change made wrong.
+          Formship LLC makes three things: an audit service for docs and support teams, a daily price
+          index called barato.si, and games under its label, Formship Games.
         </p>
         <p>
-          We work from public pages only. We don't ask for logins, calls or a contract before you
-          have read the report, and we don't report anything we can't quote word for word from your
-          live pages.
+          The common thread is checking the real thing. The audit
+          quotes your live help center word for word. The games are each
+          built around one rule, then updated after release from what players could not read.
         </p>
         <p>
-          <NuxtLink to="/">See the audit</NuxtLink> or read
-          <NuxtLink to="/research">our early field note</NuxtLink>.
+          The audit works from public pages only. We don't ask for logins, calls or a contract before
+          you have read the report, and we don't report anything we can't quote from your live pages.
+          <NuxtLink to="/">See the audit</NuxtLink> or read <NuxtLink to="/research">our early field note</NuxtLink>.
         </p>
       </div>
       <dl class="about__facts">
@@ -39,6 +40,10 @@ usePageSeo({
         <div class="about__fact">
           <dt class="label">Founder</dt>
           <dd>{{ SITE.founder }}</dd>
+        </div>
+        <div class="about__fact">
+          <dt class="label">Products</dt>
+          <dd><NuxtLink to="/">Drift audits</NuxtLink>, <a href="https://barato.si" rel="noopener">barato.si</a>, <NuxtLink to="/games/">Formship Games</NuxtLink></dd>
         </div>
         <div class="about__fact">
           <dt class="label">Contact</dt>
