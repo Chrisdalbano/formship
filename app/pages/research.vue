@@ -148,7 +148,7 @@ const rows = [
 
       <p class="note__close">
         We name no company here and quote none of their text. To have yours read,
-        <NuxtLink to="/">see the audit</NuxtLink>.
+        <NuxtLink to="/audit">see the audit</NuxtLink>.
       </p>
     </div>
   </article>

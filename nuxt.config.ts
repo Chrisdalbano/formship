@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/', '/sample', '/guides/', '/research', '/about', '/privacy', '/games/', '/games/studio', '/games/spare-knight', '/games/i-wont-be-abducted', '/games/thunderbashers'],
+      routes: ['/', '/audit', '/sample', '/guides/', '/research', '/about', '/privacy', '/games/', '/games/studio', '/games/spare-knight', '/games/i-wont-be-abducted', '/games/thunderbashers'],
       crawlLinks: true,
       // The crawler strips trailing slashes, so links to /guides/ would also produce a
       // guides.html beside the guides/ folder. Only guides/index.html should exist.

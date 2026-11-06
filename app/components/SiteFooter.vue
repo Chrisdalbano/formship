@@ -7,16 +7,17 @@ import { MAILTO, SITE } from '~~/shared/site'
     <div class="legal">
       <p>© 2026 {{ SITE.legalName }}. {{ SITE.location }}.</p>
       <p class="also">
-        Also from {{ SITE.legalName }}:
-        <a href="https://barato.si" rel="noopener">barato.si</a>, a daily index of US price drops and probable price errors,
-        and <NuxtLink to="/games/">Formship Games</NuxtLink>, our game label.
+        Help-center drift audits, <a href="https://barato.si" rel="noopener">barato.si</a>
+        and <NuxtLink to="/games/">Formship Games</NuxtLink>.
       </p>
     </div>
     <ul class="links">
+      <li><NuxtLink to="/audit">Audit</NuxtLink></li>
       <li><NuxtLink to="/sample">Sample report</NuxtLink></li>
       <li><NuxtLink to="/guides/">Guides</NuxtLink></li>
       <li><NuxtLink to="/research">Research</NuxtLink></li>
       <li><NuxtLink to="/games/">Games</NuxtLink></li>
+      <li><a href="https://barato.si" rel="noopener">barato.si</a></li>
       <li><NuxtLink to="/about">About</NuxtLink></li>
       <li><NuxtLink to="/privacy">Privacy</NuxtLink></li>
       <li><a :href="MAILTO">{{ SITE.email }}</a></li>

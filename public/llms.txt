@@ -14,7 +14,8 @@
 
 ## Pages
 
-- [Home](https://formship.io/): what the audit is, price, and FAQ.
+- [Home](https://formship.io/): the company and its three lines.
+- [Help-center drift audit](https://formship.io/audit): what the audit is, price, and FAQ.
 - [Sample report](https://formship.io/sample): a full example report for a fictional product, showing the structure of a real one.
 - [Guides](https://formship.io/guides/): practical guides for docs and support owners.
 - [How help-center drift happens, and a 20-minute monthly check](https://formship.io/guides/help-center-drift): why help articles fall behind a product and a monthly check one person can run.

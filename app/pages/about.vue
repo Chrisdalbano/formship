@@ -25,7 +25,7 @@ usePageSeo({
         <p>
           The audit works from public pages only. We don't ask for logins, calls or a contract before
           you have read the report, and we don't report anything we can't quote from your live pages.
-          <NuxtLink to="/">See the audit</NuxtLink> or read <NuxtLink to="/research">our early field note</NuxtLink>.
+          <NuxtLink to="/audit">See the audit</NuxtLink> or read <NuxtLink to="/research">our early field note</NuxtLink>.
         </p>
       </div>
       <dl class="about__facts">
@@ -43,7 +43,7 @@ usePageSeo({
         </div>
         <div class="about__fact">
           <dt class="label">Products</dt>
-          <dd><NuxtLink to="/">Drift audits</NuxtLink>, <a href="https://barato.si" rel="noopener">barato.si</a>, <NuxtLink to="/games/">Formship Games</NuxtLink></dd>
+          <dd><NuxtLink to="/audit">Drift audits</NuxtLink>, <a href="https://barato.si" rel="noopener">barato.si</a>, <NuxtLink to="/games/">Formship Games</NuxtLink></dd>
         </div>
         <div class="about__fact">
           <dt class="label">Contact</dt>

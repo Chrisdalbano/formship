@@ -41,7 +41,7 @@ useHead({
 <template>
   <div class="games">
     <section class="container intro">
-      <p class="label">Formship Games</p>
+      <GamesLogo :height="72" class="intro__logo" />
       <h1 class="h1 h1--page">Small games built around one rule you can say out loud.</h1>
       <p class="lede">
         Formship Games is the game label of Formship LLC in Orlando, Florida. Tactical and systemic
@@ -117,6 +117,7 @@ useHead({
 .intro { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3.5rem); display: grid; gap: 1.25rem; }
 .intro .h1 { max-width: 52rem; }
 .intro .lede { max-width: 40rem; }
+.intro__logo { margin: -10px 0 0 -18px; }
 
 .status { color: var(--old); }
 

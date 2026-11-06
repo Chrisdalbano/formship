@@ -1,31 +1,25 @@
 <script setup lang="ts">
-// The homepage hero has its own CTA, so one screen never shows two.
+// One header on every page: same logo, same four links. Only the active link changes.
 const route = useRoute()
-const inGames = computed(() => route.path.startsWith('/games'))
-const showCta = computed(() => route.path !== '/' && !inGames.value)
-const inGuides = computed(() => route.path.startsWith('/guides'))
+const section = computed(() => {
+  const p = route.path
+  if (p.startsWith('/games')) return 'games'
+  if (p === '/audit' || p.startsWith('/sample') || p.startsWith('/guides') || p.startsWith('/research')) return 'audit'
+  if (p.startsWith('/about')) return 'about'
+  return ''
+})
 </script>
 
 <template>
   <header class="container header">
-    <NuxtLink v-if="inGames" to="/games/" class="home home--games" aria-label="Formship Games home">
-      <GamesLogo />
-    </NuxtLink>
-    <NuxtLink v-else to="/" class="home" aria-label="Formship home">
+    <NuxtLink to="/" class="home" aria-label="Formship home">
       <SiteLogo />
     </NuxtLink>
-    <nav v-if="inGames" class="nav" aria-label="Games">
-      <NuxtLink to="/games/" :class="{ 'is-section': route.path === '/games/' || route.path === '/games' }">Games</NuxtLink>
-      <NuxtLink to="/games/studio">Studio</NuxtLink>
-      <NuxtLink to="/" class="nav-wide">Formship</NuxtLink>
-    </nav>
-    <nav v-else class="nav" aria-label="Main">
-      <NuxtLink to="/sample">Sample</NuxtLink>
-      <NuxtLink to="/guides/" :class="{ 'is-section': inGuides }">Guides</NuxtLink>
-      <NuxtLink to="/research" class="nav-wide">Research</NuxtLink>
-      <NuxtLink to="/games/" class="nav-wide">Games</NuxtLink>
-      <NuxtLink to="/about" class="nav-wide">About</NuxtLink>
-      <CtaLink v-if="showCta" compact class="nav-cta" />
+    <nav class="nav" aria-label="Main">
+      <NuxtLink to="/audit" :class="{ 'is-section': section === 'audit' }">Audit</NuxtLink>
+      <NuxtLink to="/games/" :class="{ 'is-section': section === 'games' }">Games</NuxtLink>
+      <a href="https://barato.si" rel="noopener" class="nav-wide">barato.si</a>
+      <NuxtLink to="/about" :class="{ 'is-section': section === 'about' }" class="nav-wide">About</NuxtLink>
     </nav>
   </header>
 </template>
@@ -41,7 +35,6 @@ const inGuides = computed(() => route.path.startsWith('/guides'))
 
 /* The logo file has built-in padding (100 of 1100 wide, 69 of 400 tall). Pull it out so the wordmark sits on the grid. */
 .home { display: block; margin: -11px 0 -11px -16px; }
-.home--games { margin: -8px 0 -8px -14px; }
 
 .nav {
   display: flex;
@@ -50,14 +43,13 @@ const inGuides = computed(() => route.path.startsWith('/guides'))
   font-size: 0.9375rem;
 }
 
-.nav a:not(.nav-cta) { color: var(--mute); text-decoration: none; }
-.nav a:not(.nav-cta):hover,
-.nav a.router-link-exact-active:not(.nav-cta),
+.nav a { color: var(--mute); text-decoration: none; }
+.nav a:hover,
 .nav a.is-section { color: var(--ink); }
+.nav a.is-section { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
 
-/* Phones: the first two links stay; the rest are one tap away in the footer. */
+/* Phones: Audit and Games stay; barato.si and About are in the footer. */
 @media (max-width: 30rem) {
-  .nav-cta,
   .nav-wide { display: none; }
 }
 </style>
