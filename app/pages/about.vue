@@ -2,33 +2,37 @@
 import { MAILTO, SITE } from '~~/shared/site'
 
 usePageSeo({
-  title: 'About | Formship',
-  description: "Formship LLC is a small software company in Orlando, Florida, founded by Christian D'Albano. It makes help-center drift audits, the barato.si price index, and games under Formship Games.",
+  title: 'About | Formship Games',
+  description: "Formship Games is the studio name of Formship LLC, an independent game studio in Orlando, Florida, founded by Christian D'Albano.",
   path: '/about',
 })
 </script>
 
 <template>
   <div class="container about">
-    <h1 class="h1 h1--page">A small software company in Orlando, Florida.</h1>
+    <h1 class="h1 h1--page">An independent game studio in Orlando, Florida.</h1>
     <div class="about__grid">
       <div class="prose">
         <p class="lede">
-          Formship LLC makes three things: an audit service for docs and support teams, a daily price
-          index called barato.si, and games under its label, Formship Games.
+          Formship Games is the studio name of Formship LLC. The company started in software and now
+          makes games only.
         </p>
         <p>
-          The common thread is checking the real thing. The audit
-          quotes your live help center word for word. The games are each
-          built around one rule, then updated after release from what players could not read.
+          Four people work here. Spare Knight, a tactical roguelike where attacks never miss, is the
+          game in development, and the earlier games are released and playable.
+          <NuxtLink to="/games/">See the games</NuxtLink> or read
+          <NuxtLink to="/games/studio">who we are and how we work</NuxtLink>.
         </p>
         <p>
-          The audit works from public pages only. We don't ask for logins, calls or a contract before
-          you have read the report, and we don't report anything we can't quote from your live pages.
-          <NuxtLink to="/audit">See the audit</NuxtLink> or read <NuxtLink to="/research">our early field note</NuxtLink>.
+          The help-center audit service that Formship ran in 2026 is closed. If you received a report
+          from us and have a question about it, write to <a :href="MAILTO">{{ SITE.email }}</a>.
         </p>
       </div>
       <dl class="about__facts">
+        <div class="about__fact">
+          <dt class="label">Studio</dt>
+          <dd>Formship Games</dd>
+        </div>
         <div class="about__fact">
           <dt class="label">Company</dt>
           <dd>{{ SITE.legalName }}</dd>
@@ -40,10 +44,6 @@ usePageSeo({
         <div class="about__fact">
           <dt class="label">Founder</dt>
           <dd>{{ SITE.founder }}</dd>
-        </div>
-        <div class="about__fact">
-          <dt class="label">Products</dt>
-          <dd><NuxtLink to="/audit">Drift audits</NuxtLink>, <a href="https://barato.si" rel="noopener">barato.si</a>, <NuxtLink to="/games/">Formship Games</NuxtLink></dd>
         </div>
         <div class="about__fact">
           <dt class="label">Contact</dt>

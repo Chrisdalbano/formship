@@ -1,13 +1,13 @@
 ﻿export const SITE = {
   url: 'https://formship.io',
-  name: 'Formship',
+  name: 'Formship Games',
   legalName: 'Formship LLC',
   location: 'Orlando, Florida',
   founder: "Christian D'Albano",
   /** The one contact address. Every mailto on the site is built from this. */
   email: 'hi@formship.io',
-  ogImage: 'https://formship.io/og.png',
-  logo: 'https://formship.io/brand/formship-horizontal-blue.svg',
+  ogImage: 'https://formship.io/games/spare-knight/og.jpg',
+  logo: 'https://formship.io/brand/games/formship-games-lockup-light.svg',
   /**
    * Mouseflow project for formship.io (Christian's personal Mouseflow account).
    * Empty = no script and the privacy page says "no analytics". Set both together.

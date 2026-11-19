@@ -29,7 +29,7 @@ export function usePageSeo({ title, description, path, article, image }: PageSeo
     ogImage: image ? `${SITE.url}${image.src}` : SITE.ogImage,
     ogImageWidth: image?.width ?? 1200,
     ogImageHeight: image?.height ?? 630,
-    ogImageAlt: image?.alt ?? 'Formship. Help-center drift audits, $149 flat, report in 48 hours.',
+    ogImageAlt: image?.alt ?? 'Formship Games, an independent game studio in Orlando, Florida.',
     twitterCard: 'summary_large_image',
     ...(article
       ? {

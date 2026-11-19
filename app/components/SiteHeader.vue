@@ -1,10 +1,10 @@
 <script setup lang="ts">
-// One header on every page: same logo, same four links. Only the active link changes.
+// One header on every page: same logo, same three links. Only the active link changes.
 const route = useRoute()
 const section = computed(() => {
   const p = route.path
+  if (p.startsWith('/games/studio')) return 'studio'
   if (p.startsWith('/games')) return 'games'
-  if (p === '/audit' || p.startsWith('/sample') || p.startsWith('/guides') || p.startsWith('/research')) return 'audit'
   if (p.startsWith('/about')) return 'about'
   return ''
 })
@@ -12,13 +12,12 @@ const section = computed(() => {
 
 <template>
   <header class="container header">
-    <NuxtLink to="/" class="home" aria-label="Formship home">
-      <SiteLogo />
+    <NuxtLink to="/" class="home" aria-label="Formship Games home">
+      <GamesLogo :height="64" />
     </NuxtLink>
     <nav class="nav" aria-label="Main">
-      <NuxtLink to="/audit" :class="{ 'is-section': section === 'audit' }">Audit</NuxtLink>
       <NuxtLink to="/games/" :class="{ 'is-section': section === 'games' }">Games</NuxtLink>
-      <a href="https://barato.si" rel="noopener" class="nav-wide">barato.si</a>
+      <NuxtLink to="/games/studio" :class="{ 'is-section': section === 'studio' }">Studio</NuxtLink>
       <NuxtLink to="/about" :class="{ 'is-section': section === 'about' }" class="nav-wide">About</NuxtLink>
     </nav>
   </header>
@@ -48,7 +47,7 @@ const section = computed(() => {
 .nav a.is-section { color: var(--ink); }
 .nav a.is-section { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.45em; text-decoration-thickness: 2px; }
 
-/* Phones: Audit and Games stay; barato.si and About are in the footer. */
+/* Phones: Games and Studio stay; About is in the footer. */
 @media (max-width: 30rem) {
   .nav-wide { display: none; }
 }

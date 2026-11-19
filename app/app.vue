@@ -8,7 +8,7 @@ const organization = {
   name: SITE.name,
   legalName: SITE.legalName,
   url: `${SITE.url}/`,
-  logo: `${SITE.url}/brand/formship-horizontal-blue.svg`,
+  logo: SITE.logo,
   email: SITE.email,
   address: {
     '@type': 'PostalAddress',

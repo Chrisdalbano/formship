@@ -4,7 +4,7 @@ import { SITE } from '~~/shared/site'
 
 usePageSeo({
   title: 'Studio | Formship Games',
-  description: "How Formship Games works: one rule per game, hand-drawn characters, and updates driven by what players could not read. A label of Formship LLC, Orlando, Florida.",
+  description: "Who makes the games at Formship Games and how: one rule per game, hand-drawn characters, and updates driven by what players could not read. Orlando, Florida.",
   path: '/games/studio',
   image: GAMES[0]!.og,
 })
@@ -20,10 +20,12 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
     <div class="studio__grid">
       <div class="prose">
         <p class="lede">
-          Formship started as a software company and still is one. Formship Games is where the same
-          company makes games: one designer who programs and paints, and collaborators credited by
-          name on every game they touch.
+          Formship LLC started as a software company and now makes games only. Formship Games is a
+          studio of four, and everyone is credited by name on the games they work on.
         </p>
+
+        <h2 class="h3">Who we are</h2>
+        <TeamList />
 
         <h2 class="h3">One rule you can say out loud</h2>
         <p>
@@ -50,10 +52,10 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
       </div>
 
       <dl class="facts">
-        <div><dt class="label">Label</dt><dd>Formship Games</dd></div>
+        <div><dt class="label">Studio</dt><dd>Formship Games</dd></div>
         <div><dt class="label">Company</dt><dd>{{ SITE.legalName }}</dd></div>
         <div><dt class="label">Based in</dt><dd>{{ SITE.location }}</dd></div>
-        <div><dt class="label">Founder and designer</dt><dd>{{ SITE.founder }}</dd></div>
+        <div><dt class="label">Founder</dt><dd>{{ SITE.founder }}</dd></div>
         <div><dt class="label">Engines</dt><dd>Phaser, Unity, Godot</dd></div>
         <div><dt class="label">In development</dt><dd><NuxtLink to="/games/spare-knight">Spare Knight</NuxtLink></dd></div>
         <div><dt class="label">Play</dt><dd><a href="https://formship.itch.io" rel="noopener">formship.itch.io</a></dd></div>

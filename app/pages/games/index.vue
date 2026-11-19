@@ -2,7 +2,7 @@
 import { GAMES, RELEASES } from '~/data/games'
 import { SITE } from '~~/shared/site'
 
-const description = "Formship Games is the game label of Formship LLC in Orlando, Florida. Tactical and systemic games with hand-drawn art, designed and programmed by Christian D'Albano."
+const description = "Formship Games is an independent game studio in Orlando, Florida. Tactical and systemic games with hand-drawn art, with Spare Knight in development for desktop."
 
 const [lead, ...rest] = GAMES
 
@@ -44,8 +44,8 @@ useHead({
       <GamesLogo :height="72" class="intro__logo" />
       <h1 class="h1 h1--page">Small games built around one rule you can say out loud.</h1>
       <p class="lede">
-        Formship Games is the game label of Formship LLC in Orlando, Florida. Tactical and systemic
-        games with hand-drawn art, designed, programmed and directed by Christian D'Albano.
+        Formship Games is an independent studio in Orlando, Florida. Tactical and systemic games with
+        hand-drawn art. Credits are on each game's page.
       </p>
       <p class="intro__links">
         <a href="https://formship.itch.io" rel="noopener">All our games on itch.io</a>
@@ -104,8 +104,8 @@ useHead({
       <h2 id="studio-title" class="label">Studio</h2>
       <div class="prose">
         <p class="lede">
-          One designer who also programs and paints, with collaborators credited by name on each game.
-          Every game here was updated after release, based on what players could and could not read.
+          Four people work on Spare Knight. Every game here was updated after release, based on what
+          players could and could not read.
         </p>
         <p>
           <NuxtLink to="/games/studio">How the studio works</NuxtLink> or write to

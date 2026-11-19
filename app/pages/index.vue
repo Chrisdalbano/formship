@@ -1,62 +1,42 @@
 <script setup lang="ts">
 import { GAMES } from '~/data/games'
-
-usePageSeo({
-  title: 'Formship | Help-center audits, barato.si and Formship Games',
-  description: 'Formship LLC is a small software company in Orlando, Florida. We check help centers against changelogs for SaaS teams, publish the barato.si price index, and make games under Formship Games.',
-  path: '/',
-})
+import { SITE } from '~~/shared/site'
 
 const [lead, ...rest] = GAMES
+
+usePageSeo({
+  title: 'Formship Games | Independent game studio in Orlando, Florida',
+  description: 'Formship Games is an independent game studio in Orlando, Florida. Tactical and systemic games with hand-drawn art. Spare Knight, a tactical roguelike where attacks never miss, is in development for desktop.',
+  path: '/',
+  image: lead!.og,
+})
+
+const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games')}`
 </script>
 
 <template>
   <div class="home">
     <section class="container intro" aria-labelledby="home-title">
-      <p class="label">Formship LLC · Orlando, Florida</p>
-      <h1 id="home-title" class="intro__title">A small software company. Audits, a price index and games.</h1>
+      <p class="label">Independent game studio · {{ SITE.location }}</p>
+      <h1 id="home-title" class="intro__title">Small games built around one rule you can say out loud.</h1>
       <p class="intro__sub">
-        We check help centers against changelogs for SaaS teams, publish barato.si every day, and make
-        games under our label, Formship Games. Each one is below.
+        We are four people making Spare Knight, a tactical roguelike where attacks never miss. The
+        browser alpha is playable today, and the full game is in development for desktop, aimed at Steam.
       </p>
-      <ul class="intro__index">
-        <li><a href="#audit">Help-center drift audit</a></li>
-        <li><a href="#games">Formship Games</a></li>
-        <li><a href="#barato">barato.si</a></li>
-      </ul>
-    </section>
-
-    <section id="audit" class="line" aria-labelledby="audit-title">
-      <div class="container line__top">
-        <div class="line__copy">
-          <p class="label line__eyebrow">Help-center drift audit</p>
-          <h2 id="audit-title" class="h2">We check your help center against your changelog.</h2>
-          <p class="line__sub">
-            You get every article a recent release made wrong, with the outdated sentence quoted
-            and a corrected one to paste in. $149, and you pay after you read it.
-          </p>
-        </div>
-        <div class="line__action">
-          <CtaLink />
-          <NuxtLink to="/audit" class="line__more">How it works and pricing</NuxtLink>
-          <NuxtLink to="/sample" class="line__more">Sample report</NuxtLink>
-        </div>
-      </div>
-      <div class="line__band">
-        <div class="container">
-          <DriftFilm />
-        </div>
+      <div class="intro__action">
+        <NuxtLink :to="`/games/${lead!.slug}`" class="line__button">About Spare Knight</NuxtLink>
+        <a :href="lead!.play[0]!.href" class="line__more" rel="noopener">{{ lead!.play[0]!.label }}</a>
       </div>
     </section>
 
     <section id="games" class="line" aria-labelledby="games-title">
       <div class="container line__top">
         <div class="line__copy">
-          <p class="label line__eyebrow">Formship Games</p>
-          <h2 id="games-title" class="h2">Small games built around one rule you can say out loud.</h2>
+          <p class="label line__eyebrow">Games</p>
+          <h2 id="games-title" class="h2">One in development, the rest released and playable.</h2>
           <p class="line__sub">
-            Our game label. Tactical and systemic games with hand-drawn art. Spare Knight, a tactical
-            roguelike where attacks never miss, is in development for desktop.
+            Tactical and systemic games with hand-drawn art. Each one was updated after release from
+            what players could not read.
           </p>
         </div>
         <div class="line__action">
@@ -65,7 +45,7 @@ const [lead, ...rest] = GAMES
       </div>
       <div class="container games">
         <NuxtLink :to="`/games/${lead!.slug}`" class="games__lead">
-          <img :src="lead!.cover.src" :alt="lead!.cover.alt" :width="lead!.cover.width" :height="lead!.cover.height" loading="lazy">
+          <img :src="lead!.cover.src" :alt="lead!.cover.alt" :width="lead!.cover.width" :height="lead!.cover.height">
           <span class="label">{{ lead!.title }} · {{ lead!.status }}</span>
         </NuxtLink>
         <NuxtLink v-for="g in rest" :key="g.slug" :to="`/games/${g.slug}`" class="games__item">
@@ -75,18 +55,19 @@ const [lead, ...rest] = GAMES
       </div>
     </section>
 
-    <section id="barato" class="line line--last" aria-labelledby="barato-title">
+    <section id="studio" class="line line--last" aria-labelledby="studio-title">
       <div class="container line__top">
         <div class="line__copy">
-          <p class="label line__eyebrow">barato.si</p>
-          <h2 id="barato-title" class="h2">A daily index of US price drops and probable price errors.</h2>
-          <p class="line__sub">
-            Published every day, in Spanish and English.
-          </p>
+          <p class="label line__eyebrow">Studio</p>
+          <h2 id="studio-title" class="h2">Four people. The design, art, story and music are our own work.</h2>
         </div>
         <div class="line__action">
-          <a href="https://barato.si" class="line__button" rel="noopener">Open barato.si</a>
+          <NuxtLink to="/games/studio" class="line__button">How we work</NuxtLink>
+          <a :href="mail" class="line__more">{{ SITE.email }}</a>
         </div>
+      </div>
+      <div class="container">
+        <TeamList />
       </div>
     </section>
   </div>
@@ -115,12 +96,10 @@ const [lead, ...rest] = GAMES
   letter-spacing: -0.006em;
 }
 
-.intro__index { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; margin-top: 0.5rem; }
-.intro__index a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; }
-.intro__index a:hover { color: var(--accent); border-color: var(--accent); }
+.intro__action { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 0.5rem; }
 
 .line { border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
-.line--last { padding-bottom: clamp(2rem, 5vw, 4rem); }
+.line--last { padding-bottom: clamp(3rem, 7vw, 5.5rem); }
 
 .line__top {
   display: grid;
@@ -132,7 +111,7 @@ const [lead, ...rest] = GAMES
 }
 
 .line__copy { display: grid; gap: 1rem; }
-.line__copy .h2 { max-width: 22ch; }
+.line__copy .h2 { max-width: 24ch; }
 .line__eyebrow { color: var(--accent); }
 
 .line__action { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
@@ -150,8 +129,6 @@ const [lead, ...rest] = GAMES
   white-space: nowrap;
 }
 .line__button:hover { border-color: var(--accent); color: var(--accent); }
-
-.line__band { background: var(--surface); border-block: 1px solid var(--line); }
 
 .games {
   display: grid;
