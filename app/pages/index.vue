@@ -1,126 +1,151 @@
 <script setup lang="ts">
-import { GAMES } from '~/data/games'
+import { GAMES, RELEASES } from '~/data/games'
+import { TEAM } from '~/data/team'
 import { SITE } from '~~/shared/site'
 
 const [lead, ...rest] = GAMES
 
 usePageSeo({
   title: 'Formship Games | Independent game studio in Orlando, Florida',
-  description: 'Formship Games is an independent game studio in Orlando, Florida. Tactical and systemic games with hand-drawn art. Spare Knight, a tactical roguelike where attacks never miss, is in development for desktop.',
+  description: 'Formship Games is an independent game studio in Orlando, Florida. Spare Knight, a tactical roguelike where attacks never miss, is in development for desktop. The alpha is playable in the browser.',
   path: '/',
   image: lead!.og,
 })
 
+/** The released games as one wall of tiles. Capture first, then the title. */
+const wall = [
+  ...rest.map(g => ({
+    title: g.title,
+    logline: g.logline,
+    meta: g.genre,
+    to: `/games/${g.slug}`,
+    href: '',
+    // ThunderBashers shows a match instead of its logo plate.
+    image: g.slug === 'thunderbashers' ? g.shots[0]! : g.cover,
+  })),
+  ...RELEASES.map(r => ({ title: r.title, logline: r.logline, meta: r.engine, to: '', href: r.href, image: r.image })),
+]
+
+const camp = lead!.shots[0]!
+const act2 = lead!.shots[1]!
 const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games')}`
 </script>
 
 <template>
   <div class="home">
-    <section class="container intro" aria-labelledby="home-title">
-      <p class="label">Independent game studio · {{ SITE.location }}</p>
-      <h1 id="home-title" class="intro__title">Small games built around one rule you can say out loud.</h1>
-      <p class="intro__sub">
-        We are four people making Spare Knight, a tactical roguelike where attacks never miss. The
-        browser alpha is playable today, and the full game is in development for desktop, aimed at Steam.
-      </p>
-      <div class="intro__action">
-        <NuxtLink :to="`/games/${lead!.slug}`" class="line__button">About Spare Knight</NuxtLink>
-        <a :href="lead!.play[0]!.href" class="line__more" rel="noopener">{{ lead!.play[0]!.label }}</a>
+    <section class="hero" aria-labelledby="hero-title">
+      <NuxtLink :to="`/games/${lead!.slug}`" class="hero__art" aria-label="Spare Knight">
+        <img :src="lead!.cover.src" :alt="lead!.cover.alt" :width="lead!.cover.width" :height="lead!.cover.height" fetchpriority="high">
+      </NuxtLink>
+      <div class="container hero__bar">
+        <div class="hero__copy">
+          <p class="hero__status">In development for desktop. Alpha playable now.</p>
+          <h1 id="hero-title" class="hero__title">A tactical roguelike where attacks never miss.</h1>
+        </div>
+        <div class="hero__actions">
+          <a :href="lead!.play[0]!.href" class="btn btn--fill" rel="noopener">Play the alpha</a>
+          <NuxtLink :to="`/games/${lead!.slug}`" class="btn">About Spare Knight</NuxtLink>
+        </div>
       </div>
     </section>
 
-    <section id="games" class="line" aria-labelledby="games-title">
-      <div class="container line__top">
-        <div class="line__copy">
-          <p class="label line__eyebrow">Games</p>
-          <h2 id="games-title" class="h2">One in development, the rest released and playable.</h2>
-          <p class="line__sub">
-            Tactical and systemic games with hand-drawn art. Each one was updated after release from
-            what players could not read.
+    <section class="feature" aria-label="Spare Knight">
+      <div class="container feature__grid">
+        <figure class="feature__main">
+          <img :src="camp.src" :alt="camp.alt" :width="camp.width" :height="camp.height" loading="lazy">
+        </figure>
+        <div class="feature__side">
+          <p class="feature__lede">{{ lead!.story[0] }}</p>
+          <p class="body-mute">
+            Combat runs on a small grid where speed sets the turn order. What you commit is what
+            happens, so every fight is about timing.
+          </p>
+          <figure>
+            <img :src="act2.src" :alt="act2.alt" :width="act2.width" :height="act2.height" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="wall" aria-labelledby="wall-title">
+      <div class="container wall__head">
+        <h2 id="wall-title" class="h2">Released and playable</h2>
+        <NuxtLink to="/games/" class="more">All games</NuxtLink>
+      </div>
+      <div class="container wall__grid">
+        <component
+          :is="g.to ? resolveComponent('NuxtLink') : 'a'"
+          v-for="g in wall"
+          :key="g.title"
+          v-bind="g.to ? { to: g.to } : { href: g.href, rel: 'noopener' }"
+          class="tile"
+        >
+          <img :src="g.image.src" :alt="g.image.alt" :width="g.image.width" :height="g.image.height" loading="lazy">
+          <span class="tile__title">{{ g.title }}</span>
+          <span class="tile__meta">{{ g.meta }}</span>
+        </component>
+      </div>
+    </section>
+
+    <section class="studio" aria-labelledby="studio-title">
+      <div class="container studio__grid">
+        <div class="studio__copy">
+          <h2 id="studio-title" class="h2">Four people in Orlando, making games by hand.</h2>
+          <p class="body-mute">
+            The design, art, story and music are our own work. Every game starts from one rule a
+            player can repeat after one match.
+          </p>
+          <p class="studio__links">
+            <NuxtLink to="/games/studio" class="more">How we work</NuxtLink>
+            <a :href="mail" class="more">{{ SITE.email }}</a>
           </p>
         </div>
-        <div class="line__action">
-          <NuxtLink to="/games/" class="line__button">See the games</NuxtLink>
-        </div>
-      </div>
-      <div class="container games">
-        <NuxtLink :to="`/games/${lead!.slug}`" class="games__lead">
-          <img :src="lead!.cover.src" :alt="lead!.cover.alt" :width="lead!.cover.width" :height="lead!.cover.height">
-          <span class="label">{{ lead!.title }} · {{ lead!.status }}</span>
-        </NuxtLink>
-        <NuxtLink v-for="g in rest" :key="g.slug" :to="`/games/${g.slug}`" class="games__item">
-          <img :src="g.cover.src" :alt="g.cover.alt" :width="g.cover.width" :height="g.cover.height" loading="lazy">
-          <span class="label">{{ g.title }} · {{ g.status }}</span>
-        </NuxtLink>
-      </div>
-    </section>
-
-    <section id="studio" class="line line--last" aria-labelledby="studio-title">
-      <div class="container line__top">
-        <div class="line__copy">
-          <p class="label line__eyebrow">Studio</p>
-          <h2 id="studio-title" class="h2">Four people. The design, art, story and music are our own work.</h2>
-        </div>
-        <div class="line__action">
-          <NuxtLink to="/games/studio" class="line__button">How we work</NuxtLink>
-          <a :href="mail" class="line__more">{{ SITE.email }}</a>
-        </div>
-      </div>
-      <div class="container">
-        <TeamList />
+        <ul class="people">
+          <li v-for="m in TEAM" :key="m.name">
+            <h3 class="h3">{{ m.name }}</h3>
+            <p class="body-mute">{{ m.role }}</p>
+          </li>
+        </ul>
       </div>
     </section>
   </div>
 </template>
 
 <style scoped>
-.intro {
-  display: grid;
-  gap: 1.25rem;
-  padding-block: clamp(3rem, 9vw, 7rem) clamp(3rem, 6vw, 5rem);
+img { display: block; width: 100%; height: auto; background: var(--surface); }
+
+/* Hero: the key art runs edge to edge. Text sits under it, never on it. */
+.hero__art { display: block; }
+.hero__art img {
+  height: clamp(18rem, 62vh, 44rem);
+  object-fit: cover;
+  object-position: 62% 4%;
 }
 
-.intro__title {
-  max-width: 18ch;
-  font-size: clamp(2.5rem, 6.4vw, 5.5rem);
+.hero__bar {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: clamp(1.75rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+}
+@media (min-width: 56rem) {
+  .hero__bar { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 3rem; }
+}
+
+.hero__copy { display: grid; gap: 0.75rem; }
+.hero__status { color: var(--accent); font-size: 0.9375rem; font-weight: 600; }
+.hero__title {
+  max-width: 20ch;
+  font-size: clamp(2.125rem, 5vw, 4rem);
   font-weight: 640;
-  line-height: 1.02;
-  letter-spacing: -0.042em;
+  line-height: 1.04;
+  letter-spacing: -0.038em;
 }
 
-.intro__sub, .line__sub {
-  max-width: 38rem;
-  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
-  line-height: 1.5;
-  color: var(--mute);
-  letter-spacing: -0.006em;
-}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-.intro__action { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 0.5rem; }
-
-.line { border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
-.line--last { padding-bottom: clamp(3rem, 7vw, 5.5rem); }
-
-.line__top {
-  display: grid;
-  gap: 2rem;
-  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem);
-}
-@media (min-width: 60rem) {
-  .line__top { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 3rem; }
-}
-
-.line__copy { display: grid; gap: 1rem; }
-.line__copy .h2 { max-width: 24ch; }
-.line__eyebrow { color: var(--accent); }
-
-.line__action { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
-.line__more { color: var(--mute); font-size: 0.9375rem; }
-.line__more:hover { color: var(--ink); }
-
-.line__button {
+.btn {
   display: inline-block;
-  padding: 0.875rem 1.375rem;
+  padding: 0.9375rem 1.5rem;
   border: 1px solid var(--line-strong);
   border-radius: 4px;
   color: var(--ink);
@@ -128,20 +153,66 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
   text-decoration: none;
   white-space: nowrap;
 }
-.line__button:hover { border-color: var(--accent); color: var(--accent); }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn--fill { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn--fill:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-ink); }
 
-.games {
-  display: grid;
-  gap: 1.5rem;
-  padding-bottom: clamp(3rem, 7vw, 5.5rem);
+.feature { padding-bottom: var(--section); }
+.feature__grid { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 56rem) {
+  .feature__grid { grid-template-columns: 7fr 5fr; gap: 3rem; }
 }
-@media (min-width: 48rem) {
-  .games { grid-template-columns: 2fr 1fr; grid-template-rows: 1fr 1fr; }
-  .games__lead { grid-row: span 2; }
+.feature__main img { border-radius: 4px; }
+.feature__side { display: grid; gap: 1.25rem; }
+.feature__side img { border-radius: 4px; }
+.feature__lede {
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.022em;
 }
-.games a { display: grid; gap: 0.6rem; text-decoration: none; align-content: start; }
-.games img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; background: var(--surface); }
-.games__lead img { aspect-ratio: 16 / 10; }
-.games__item img { aspect-ratio: 16 / 9; }
-.games a:hover .label { color: var(--ink); }
+
+.wall { border-top: 1px solid var(--line); padding-block: clamp(3rem, 7vw, 5.5rem) var(--section); }
+.wall__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem 2rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.more { color: var(--mute); font-size: 0.9375rem; }
+.more:hover { color: var(--accent); }
+
+.wall__grid { display: grid; gap: 2.5rem 1.5rem; }
+@media (min-width: 44rem) { .wall__grid { grid-template-columns: 1fr 1fr; } }
+
+.tile { display: grid; gap: 0.25rem; text-decoration: none; align-content: start; }
+.tile img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  transition: transform 0.25s ease;
+}
+.tile:hover img { transform: scale(1.015); }
+.tile__title { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 620; letter-spacing: -0.02em; color: var(--ink); }
+.tile:hover .tile__title { color: var(--accent); }
+.tile__meta { color: var(--mute); font-size: 0.9375rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile img { transition: none; }
+  .tile:hover img { transform: none; }
+}
+
+.studio { background: var(--surface); border-top: 1px solid var(--line); padding-block: var(--section); }
+.studio__grid { display: grid; gap: 3rem; align-items: start; }
+@media (min-width: 60rem) { .studio__grid { grid-template-columns: 5fr 7fr; gap: 4rem; } }
+.studio__copy { display: grid; gap: 1.25rem; }
+.studio__copy .h2 { max-width: 18ch; }
+.studio__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+
+.people { display: grid; gap: 0; }
+@media (min-width: 36rem) { .people { grid-template-columns: 1fr 1fr; column-gap: 2.5rem; } }
+.people li { display: grid; gap: 0.35rem; padding-block: 1.125rem; border-top: 1px solid var(--line-strong); }
 </style>
