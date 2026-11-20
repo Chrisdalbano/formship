@@ -93,7 +93,7 @@ onBeforeUnmount(() => clearTimeout(quiet))
     <section class="studio" aria-labelledby="studio-title">
       <div class="container studio__grid">
         <div v-reveal class="studio__copy">
-          <h2 id="studio-title" class="h2">Four people in Orlando, making games with soul.</h2>
+          <h2 id="studio-title" class="h2">A small group of friends in Orlando, making games with soul.</h2>
           <p class="body-mute">
             The design, art, story and music are our own work.
           </p>

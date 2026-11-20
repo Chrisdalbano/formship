@@ -15,7 +15,12 @@ import { TEAM } from '~/data/team'
 .team { display: grid; gap: 0; }
 @media (min-width: 44rem) { .team { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
 
+/* The list sits inside .prose on the studio page; drop that list's dash and spacing. */
+.team__member::before { display: none; }
 .team__member {
+  margin-top: 0;
+  padding-left: 0;
+  align-content: start;
   display: grid;
   gap: 0.35rem;
   padding-block: 1.125rem;

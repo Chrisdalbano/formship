@@ -85,7 +85,7 @@ const { onMove, onLeave } = useTilt()
 
     <section class="container outro">
       <p class="lede">
-        Four people work on Spare Knight. Every game here was updated after release, based on what
+        A small group of friends works on Spare Knight. Every game here was updated after release, based on what
         players could and could not read.
       </p>
       <p class="outro__links">
