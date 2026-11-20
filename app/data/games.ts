@@ -3,7 +3,8 @@
  * notes in CV-Vault/10-Portfolio/projects/. Rules for this file:
  * - no shipped-game counts and no jam framing;
  * - captions describe what is on screen, never how an image was made;
- * - no cover art that was generated (Runicorn uses its gameplay shot).
+ * - no cover art that was generated (Runicorn uses its gameplay shot);
+ * - image sizes are the real pixel sizes; scripts/images.py rebuilds the files.
  */
 
 export interface Shot {
@@ -45,21 +46,21 @@ export const GAMES: Game[] = [
   {
     slug: 'spare-knight',
     title: 'Spare Knight',
-    logline: 'A tactical roguelike where attacks never miss and the tension lives in your timing.',
+    logline: 'A tactical roguelike about an outdated knight protecting the last human he has.',
     status: 'In development',
     genre: 'Tactical roguelike',
     engine: 'Phaser, Electron',
     platforms: 'Desktop, aimed at Steam. Alpha playable in the browser on Wavedash and itch.io.',
     credits: "Direction, design, programming and painted characters by Christian D'Albano. Sound, voice and co-written lore by Nicholas Drabb.",
-    cover: shot('/games/spare-knight/cover.webp', 'Spare Knight key art: the brush-lettered title with its gear over the Act 1 countryside', 1600, 1000),
+    cover: shot('/games/spare-knight/camp.webp', 'Wren and the knight at the camp fire between battles', 2138, 1623),
     og: shot('/games/spare-knight/og.jpg', "Spare Knight key art", 1200, 630),
     shots: [
-      shot('/games/spare-knight/camp.webp', 'Wren and the knight at the camp fire between battles', 1600, 1214),
-      shot('/games/spare-knight/combat-act2.webp', 'Act 2: the ruined walls on the cathedral approach', 1600, 800),
+      shot('/games/spare-knight/act1.webp', 'Act 1: the countryside road and its broken walls', 2400, 1165),
+      shot('/games/spare-knight/combat-act2.webp', 'Act 2: the ruined walls on the cathedral approach', 2400, 1200),
     ],
     story: [
       'An outdated knight protects the last human he has, in a world where the machines decided organic life is inefficient.',
-      'Combat runs on a 6x6 isometric grid and speed sets the turn order. Attacks never miss and never roll damage. What you commit is what happens. The tension lives in timing instead: a reaction wheel asks you to hear a chime and choose when to strike or brace.',
+      'Combat runs on a 6x6 isometric grid and speed sets the turn order. A reaction wheel asks you to hear a chime and choose when to strike or brace.',
       'Cog, Wren, the machines and the event illustrations are painted by hand. The painted cast is the reason the game exists, so the production pipeline is built to make drawing the only slow step.',
     ],
     now: [
@@ -80,7 +81,7 @@ export const GAMES: Game[] = [
     engine: 'Godot 4',
     platforms: 'Browser on Wavedash and itch.io',
     credits: "Design, direction, programming and hand-drawn standees by Christian D'Albano.",
-    cover: shot('/games/i-wont-be-abducted/cover.webp', 'Key art: the boy stands his ground in the bedroom doorway', 1600, 1010),
+    cover: shot('/games/i-wont-be-abducted/cover.webp', 'Key art: the boy stands his ground in the bedroom doorway', 2400, 1516),
     og: shot('/games/i-wont-be-abducted/og.jpg', "I Won't Be Abducted key art", 1200, 630),
     shots: [
       shot('/games/i-wont-be-abducted/placement-2026-09.webp', 'Night four, fight paused: legal cells glow green while a tin can is placed beside the boy and two aliens', 1600, 900),

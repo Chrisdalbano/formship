@@ -7,7 +7,7 @@
   /** The one contact address. Every mailto on the site is built from this. */
   email: 'hi@formship.io',
   ogImage: 'https://formship.io/games/spare-knight/og.jpg',
-  logo: 'https://formship.io/brand/games/formship-games-lockup-light.svg',
+  logo: 'https://formship.io/brand/formship-horizontal-white.svg',
   /**
    * Mouseflow project for formship.io (Christian's personal Mouseflow account).
    * Empty = no script and the privacy page says "no analytics". Set both together.

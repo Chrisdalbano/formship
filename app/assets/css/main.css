@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2');
   font-weight: 100 800;
@@ -14,45 +22,37 @@
   font-display: swap;
 }
 
+/* One theme: a camp at night. Warm black, paper white, one ember colour. */
 :root {
-  color-scheme: dark light;
+  color-scheme: dark;
 
-  --bg: #141414;
-  --surface: #1b1b1b;
-  --line: #2e3035;
-  --line-strong: #4a4d54;
-  --ink: #fdfdfd;
-  --mute: #a3a9b3;
-  --old: #e8a33d;
-  --new: #addfe8;
-  --accent: #e8a33d;
-  --accent-hover: #f0b45a;
-  --accent-ink: #1d1d1d;
-  --focus: #addfe8;
+  --bg: #100f0e;
+  --surface: #191715;
+  --raise: #23201c;
+  --line: #2f2b27;
+  --line-strong: #4c463f;
+  --ink: #f6f1e7;
+  --mute: #a8a092;
+  --accent: #f0a63a;
+  --accent-hover: #ffbd5c;
+  --accent-ink: #17120a;
+  --cool: #9fd3de;
+  --focus: #9fd3de;
+  /* Names the retired audit pages still use. */
+  --old: var(--accent);
+  --new: var(--cool);
 
   --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', Menlo, monospace;
 
   --max: 76rem;
-  --gutter: clamp(1.25rem, 4vw, 3rem);
-  --section: clamp(4.5rem, 10vw, 8.5rem);
-}
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --section: clamp(4rem, 9vw, 7.5rem);
+  --radius: 10px;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #fdfdfd;
-    --surface: #f5f6f7;
-    --line: #dfe3e8;
-    --line-strong: #b4bbc4;
-    --ink: #1d1d1d;
-    --mute: #5b6472;
-    --old: #96590f;
-    --new: #2d5288;
-    --accent: #2d5288;
-    --accent-hover: #24446f;
-    --accent-ink: #fdfdfd;
-    --focus: #2d5288;
-  }
+  --snap: cubic-bezier(0.3, 1.45, 0.5, 1);
+  --out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -60,6 +60,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -69,37 +70,44 @@ body {
   font: 400 1.0625rem/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
 }
 
 h1, h2, h3, p, dl, dd, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 img, svg { display: block; }
+img { max-width: 100%; }
+button { font: inherit; color: inherit; }
 
 a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 a:hover { color: var(--accent); }
 
+::selection { background: var(--accent); color: var(--accent-ink); }
+
 :focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 h1, h2, h3 { text-wrap: balance; }
 
+.h1, .h2 { font-family: var(--display); }
+
 .h1 {
-  font-size: clamp(2.75rem, 7.6vw, 6.5rem);
-  font-weight: 640;
-  line-height: 1;
-  letter-spacing: -0.042em;
+  font-size: clamp(2.5rem, 6.4vw, 5.25rem);
+  font-weight: 760;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
 }
 
-.h1--page { font-size: clamp(2.5rem, 5.4vw, 4.5rem); line-height: 1.04; letter-spacing: -0.038em; }
+.h1--page { font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -0.03em; }
 
 .h2 {
   font-size: clamp(1.75rem, 3.3vw, 2.75rem);
-  font-weight: 620;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-weight: 720;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
 }
 
 .h3 {
@@ -118,12 +126,13 @@ h1, h2, h3 { text-wrap: balance; }
 
 .body-mute { color: var(--mute); }
 
+/* Small quiet heading for a fact or a section. Sentence case, same family as the body. */
 .label {
-  font: 500 0.75rem/1.4 var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font: 500 0.875rem/1.4 var(--sans);
   color: var(--mute);
 }
+
+.status { color: var(--accent); font-weight: 600; font-size: 0.9375rem; }
 
 .container {
   width: 100%;
@@ -162,6 +171,57 @@ h1, h2, h3 { text-wrap: balance; }
 
 .num { font-variant-numeric: tabular-nums; }
 
+/* Buttons. The filled one is the single main action of a view. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.375rem;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 180ms var(--snap), border-color 140ms linear, background-color 140ms linear, color 140ms linear, box-shadow 180ms var(--out);
+}
+.btn:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
+.btn:active { transform: translateY(1px) scale(0.98); }
+
+.btn--fill {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 4px 0 #a86a12;
+}
+.btn--fill:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-ink);
+  box-shadow: 0 6px 0 #a86a12;
+}
+.btn--fill:active { box-shadow: 0 1px 0 #a86a12; transform: translateY(3px); }
+
+.btn .arrow { transition: transform 180ms var(--snap); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* A text link with an arrow that leans forward on hover. */
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--mute);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.more::after { content: '→'; transition: transform 180ms var(--snap); }
+.more:hover { color: var(--accent); }
+.more:hover::after { transform: translateX(4px); }
+
 .skip {
   position: absolute;
   left: var(--gutter);
@@ -169,9 +229,25 @@ h1, h2, h3 { text-wrap: balance; }
   padding: 0.5rem 0.75rem;
   background: var(--accent);
   color: var(--accent-ink);
-  z-index: 10;
+  z-index: 100;
 }
 .skip:focus { top: 0.5rem; color: var(--accent-ink); }
 
-.reveal { transition: opacity 520ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1); }
-.reveal--pre { opacity: 0; transform: translateY(10px); }
+/* v-reveal: see plugins/reveal.ts */
+.reveal { transition: opacity 560ms var(--out), transform 560ms var(--out); }
+.reveal--pre { opacity: 0; transform: translateY(18px); }
+
+/* Route changes (View Transitions API). The header and footer stay put; the page
+   cross-fades with a small rise, and named pictures travel between pages. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: vt-out 160ms ease-in both; }
+  ::view-transition-new(root) { animation: vt-in 360ms var(--out) both; }
+  ::view-transition-group(*) { animation-duration: 420ms; animation-timing-function: cubic-bezier(0.3, 0.9, 0.3, 1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }

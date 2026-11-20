@@ -39,10 +39,6 @@ useHead({
   <main id="main">
     <NuxtPage />
   </main>
-  <div class="container"><hr class="rule"></div>
   <SiteFooter />
+  <ClientOnly><EggKonami /></ClientOnly>
 </template>
-
-<style scoped>
-.rule { margin: 0; border: 0; border-top: 1px solid var(--line); }
-</style>

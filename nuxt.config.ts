@@ -8,14 +8,13 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [
-        { name: 'color-scheme', content: 'dark light' },
-        { name: 'theme-color', content: '#141414', media: '(prefers-color-scheme: dark)' },
-        { name: 'theme-color', content: '#fdfdfd', media: '(prefers-color-scheme: light)' },
+        { name: 'color-scheme', content: 'dark' },
+        { name: 'theme-color', content: '#100f0e' },
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/brand/formship-icon-gold.svg' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/brand/formship-icon-dark.svg' },
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/bricolage-grotesque-latin-wght-normal.woff2', crossorigin: 'anonymous' },
         { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/inter-latin-wght-normal.woff2', crossorigin: 'anonymous' },
-        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/jetbrains-mono-latin-wght-normal.woff2', crossorigin: 'anonymous' },
       ],
     },
   },
@@ -24,10 +23,18 @@ export default defineNuxtConfig({
     // research/ directory sits next to research.html, which keeps /research clean.
     payloadExtraction: false,
     appManifest: false,
+    // Route changes run inside the browser's View Transitions API: the page cross-fades
+    // and a game's picture travels from its card to its page. Browsers without it just navigate.
+    viewTransition: true,
+  },
+  // Old addresses. Static hosting, so each one is a small redirect page.
+  routeRules: {
+    '/about': { redirect: '/studio' },
+    '/games/studio': { redirect: '/studio' },
   },
   nitro: {
     prerender: {
-      routes: ['/', '/about', '/privacy', '/games/', '/games/studio', '/games/spare-knight', '/games/i-wont-be-abducted', '/games/thunderbashers'],
+      routes: ['/', '/studio', '/about', '/games/studio', '/privacy', '/games/', '/games/spare-knight', '/games/i-wont-be-abducted', '/games/thunderbashers'],
       crawlLinks: true,
       // The crawler strips trailing slashes, so links to /guides/ would also produce a
       // guides.html beside the guides/ folder. Only guides/index.html should exist.

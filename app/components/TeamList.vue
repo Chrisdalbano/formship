@@ -19,6 +19,8 @@ import { TEAM } from '~/data/team'
   display: grid;
   gap: 0.35rem;
   padding-block: 1.125rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
+  transition: border-color 160ms linear, padding-left 220ms var(--out);
 }
+.team__member:hover { border-top-color: var(--accent); padding-left: 0.5rem; }
 </style>

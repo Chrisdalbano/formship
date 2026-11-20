@@ -37,16 +37,23 @@ useHead({
 <template>
   <article class="game">
     <header class="container head">
-      <p class="label"><NuxtLink to="/games/">Formship Games</NuxtLink> / <span class="status">{{ game.status }}</span></p>
+      <p class="status">{{ game.status }}</p>
       <h1 class="h1 h1--page">{{ game.title }}</h1>
       <p class="lede">{{ game.logline }}</p>
       <p class="play">
-        <a v-for="(p, i) in game.play" :key="p.href" :href="p.href" rel="noopener" :class="{ primary: i === 0 }">{{ p.label }}</a>
+        <a
+          v-for="(p, i) in game.play"
+          :key="p.href"
+          :href="p.href"
+          rel="noopener"
+          class="btn"
+          :class="{ 'btn--fill': i === 0 }"
+        >{{ p.label }} <span v-if="i === 0" class="arrow" aria-hidden="true">→</span></a>
       </p>
     </header>
 
     <figure class="container cover">
-      <img :src="game.cover.src" :alt="game.cover.alt" :width="game.cover.width" :height="game.cover.height">
+      <Pic :shot="game.cover" eager sizes="(min-width: 82rem) 76rem, 100vw" :style="{ viewTransitionName: `art-${game.slug}` }" />
     </figure>
 
     <section class="container sheet">
@@ -64,11 +71,8 @@ useHead({
       </div>
     </section>
 
-    <section class="container shots" aria-label="Screenshots">
-      <figure v-for="s in game.shots" :key="s.src">
-        <img :src="s.src" :alt="s.alt" :width="s.width" :height="s.height" loading="lazy">
-        <figcaption class="label">{{ s.alt }}</figcaption>
-      </figure>
+    <section class="container gallery" aria-label="Screenshots">
+      <ShotGallery :shots="game.shots" />
     </section>
 
     <section class="container sheet">
@@ -78,37 +82,37 @@ useHead({
       </div>
     </section>
 
-    <nav class="container sheet" aria-label="More games">
-      <h2 class="label">More from the studio</h2>
-      <ul class="more">
-        <li v-for="g in others" :key="g.slug">
-          <NuxtLink :to="`/games/${g.slug}`" class="h3">{{ g.title }}</NuxtLink>
-          <p class="body-mute">{{ g.logline }}</p>
-        </li>
-      </ul>
+    <nav class="container others" aria-labelledby="others-title">
+      <h2 id="others-title" class="h2">More from the studio</h2>
+      <div class="others__grid">
+        <GameCard
+          v-for="(g, i) in others"
+          :key="g.slug"
+          v-reveal="i * 90"
+          :title="g.title"
+          :meta="g.genre"
+          :image="g.cover"
+          :to="`/games/${g.slug}`"
+          :slug="g.slug"
+        />
+      </div>
     </nav>
   </article>
 </template>
 
 <style scoped>
-.head { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 1.1rem; }
+.head { padding-block: clamp(2.5rem, 6vw, 5rem) 2rem; display: grid; gap: 1rem; justify-items: start; }
 .head .lede { max-width: 42rem; }
-.head .label a { text-decoration: none; }
-.status { color: var(--old); }
+.play { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 0.75rem; }
 
-.play { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; align-items: center; margin-top: 0.5rem; }
-.play .primary {
-  padding: 0.75rem 1.25rem;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 4px;
-}
-.play .primary:hover { background: var(--accent-hover); color: var(--accent-ink); }
-
-img { width: 100%; height: auto; border-radius: 4px; background: var(--surface); }
 .cover { padding-bottom: var(--section); }
+.cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line-strong), 0 0 120px -40px rgba(240, 166, 58, 0.3);
+}
 
 .body { display: grid; gap: 2.5rem; align-items: start; }
 @media (min-width: 64rem) { .body { grid-template-columns: 7fr 4fr; gap: 3rem; } }
@@ -116,16 +120,10 @@ img { width: 100%; height: auto; border-radius: 4px; background: var(--surface);
 .facts > div { display: grid; gap: 0.25rem; padding-block: 0.875rem; border-top: 1px solid var(--line); }
 .facts > div:first-child { border-top-color: var(--line-strong); }
 
-.shots {
-  display: grid;
-  gap: 2rem;
-  padding-bottom: var(--section);
-}
-@media (min-width: 48rem) { .shots { grid-template-columns: 1fr 1fr; } }
-.shots figure { display: grid; gap: 0.6rem; align-content: start; }
-.shots figcaption { text-transform: none; letter-spacing: 0.01em; }
+.gallery { padding-bottom: var(--section); }
 
-.more { display: grid; gap: 1.5rem; }
-.more li { display: grid; gap: 0.3rem; }
-.more a { text-decoration: none; }
+.others { padding-top: var(--section); border-top: 1px solid var(--line); }
+.others .h2 { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.others__grid { display: grid; gap: 3rem 2rem; }
+@media (min-width: 44rem) { .others__grid { grid-template-columns: 1fr 1fr; } }
 </style>
