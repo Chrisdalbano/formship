@@ -25,6 +25,17 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
 
         <h2 class="h3">Who we are</h2>
         <TeamList />
+
+        <dl v-reveal class="facts">
+          <div><dt class="label">Studio</dt><dd>Formship Games</dd></div>
+          <div><dt class="label">Company</dt><dd>{{ SITE.legalName }}</dd></div>
+          <div><dt class="label">Based in</dt><dd>{{ SITE.location }}</dd></div>
+          <div><dt class="label">Founder</dt><dd>{{ SITE.founder }}</dd></div>
+          <div><dt class="label">Engines</dt><dd>Phaser, Unity, Godot</dd></div>
+          <div><dt class="label">In development</dt><dd><NuxtLink to="/games/spare-knight">Spare Knight</NuxtLink></dd></div>
+          <div><dt class="label">Play</dt><dd><a href="https://formship.itch.io" rel="noopener">formship.itch.io</a></dd></div>
+          <div><dt class="label">Contact</dt><dd><a :href="mail">{{ SITE.email }}</a></dd></div>
+        </dl>
       </div>
 
       <div class="side">
@@ -38,16 +49,6 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
           </figure>
         </div>
 
-      <dl v-reveal="120" class="facts">
-        <div><dt class="label">Studio</dt><dd>Formship Games</dd></div>
-        <div><dt class="label">Company</dt><dd>{{ SITE.legalName }}</dd></div>
-        <div><dt class="label">Based in</dt><dd>{{ SITE.location }}</dd></div>
-        <div><dt class="label">Founder</dt><dd>{{ SITE.founder }}</dd></div>
-        <div><dt class="label">Engines</dt><dd>Phaser, Unity, Godot</dd></div>
-        <div><dt class="label">In development</dt><dd><NuxtLink to="/games/spare-knight">Spare Knight</NuxtLink></dd></div>
-        <div><dt class="label">Play</dt><dd><a href="https://formship.itch.io" rel="noopener">formship.itch.io</a></dd></div>
-        <div><dt class="label">Contact</dt><dd><a :href="mail">{{ SITE.email }}</a></dd></div>
-      </dl>
       </div>
     </div>
   </div>
@@ -61,6 +62,7 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
 @media (min-width: 52rem) { .studio__grid { grid-template-columns: 7fr 4fr; gap: 4rem; } }
 
 .side { display: grid; gap: 2.5rem; }
+@media (min-width: 52rem) { .side { position: sticky; top: 6rem; } }
 
 /* Snapshots as paper prints. The tone is pulled toward the site's warm dark so two phone
    photos sit in the page; hover brings the real colours back. */
@@ -88,6 +90,8 @@ const mail = `mailto:${SITE.email}?subject=${encodeURIComponent('Formship Games'
   .snap:hover { transform: none; }
 }
 
-.facts > div { display: grid; gap: 0.25rem; padding-block: 0.875rem; border-top: 1px solid var(--line); }
-.facts > div:first-child { border-top-color: var(--line-strong); }
+/* The facts run under the team in two columns, so both sides of the page end together. */
+.facts { display: grid; column-gap: 3rem; max-width: none; margin-top: 2.5rem; }
+@media (min-width: 36rem) { .facts { grid-template-columns: 1fr 1fr; } }
+.facts > div { display: grid; gap: 0.25rem; align-content: start; margin: 0; padding-block: 0.875rem; border-top: 1px solid var(--line); }
 </style>
